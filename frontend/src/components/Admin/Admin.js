@@ -14,7 +14,7 @@ import {
   setActiveResourceName,
   setResource,
   fetchResourceData,
-  fetchResourceColumns,
+  fetchResourceFields,
   setResourceUrl
 } from "./../../actions";
 
@@ -67,7 +67,7 @@ class Admin extends Component {
   setResource(name) {
     this.props.setActiveResourceName(name);
     this.props.fetchResourceData(name);
-    this.props.fetchResourceColumns(name);
+    this.props.fetchResourceFields(name);
 
     const crud = <Crud name={name} />;
     this.setState({ content: crud });
@@ -76,6 +76,8 @@ class Admin extends Component {
   render() {
     const names = Object.keys(models);
     console.log(names);
+    
+    let MediaComponent = <FileBrowser path="./assets/media" />;
 
     return (
       <Layout>
@@ -87,9 +89,11 @@ class Admin extends Component {
           <Sidebar.Menu>
             <Sidebar.Menu.Header>MAIN NAVIGATION</Sidebar.Menu.Header>
             <li>
-              <a href="#">
-                <i className="fa fa-circle-o text-yellow" />{" "}
-                <span>Warning</span>
+              <a
+                style={{ color: "white" }}
+                onClick={() => this.setContent(MediaComponent)}
+              >
+                <FontAwesome name="list" className="fa-th-list" /> Media manager
               </a>
             </li>
             <ResourcesMenu names={names} setResource={this.setResource} />
@@ -118,7 +122,7 @@ export default connect(mapStateToProps, {
   setActiveRow,
   setResource,
   fetchResourceData,
-  fetchResourceColumns,
+  fetchResourceFields,
   setActiveResourceName,
   setResourceUrl
 })(Admin);

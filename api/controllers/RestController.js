@@ -8,7 +8,6 @@
 module.exports = {
   index: function(req, res) {
     const Model = sails.models[req.param("model")];
-    //res.json(Model.attributes);
     Model.find().exec(callback.bind(null, res));
   },
   fields: function(req, res) {

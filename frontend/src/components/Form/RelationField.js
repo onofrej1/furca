@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchResourceData, fetchResourceColumns } from "./../../actions";
+import { fetchResourceData, fetchResourceFields } from "./../../actions";
 
 class RelationField extends Component {
   constructor(props) {
@@ -9,7 +9,7 @@ class RelationField extends Component {
 
   componentDidMount() {
     this.props.fetchResourceData(this.props.resourceTable);
-    this.props.fetchResourceColumns(this.props.resourceTable);
+    this.props.fetchResourceFields(this.props.resourceTable);
   }
 
   static defaultProps = {
@@ -73,5 +73,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(mapStateToProps, {
   fetchResourceData,
-  fetchResourceColumns
+  fetchResourceFields
 })(RelationField);

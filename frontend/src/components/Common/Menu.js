@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 
 class Menu extends Component {
   static defaultProps = {
-    menuItems: { data: [] }
+    menuItems: []
   };
 
   componentDidMount() {
@@ -24,7 +24,7 @@ class Menu extends Component {
   }
 
   render() {
-    let menuItems = this.props.menuItems.data;
+    let menuItems = this.props.menuItems;
     console.log(menuItems);
     if (!menuItems) {
       return <div />;
@@ -126,7 +126,7 @@ class Menu extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    menuItems: state.resources.menuitem
+    menuItems: state.resourceData.menuitem
   };
 };
 

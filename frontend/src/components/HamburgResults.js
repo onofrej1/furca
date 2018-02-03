@@ -17,7 +17,7 @@ class HamburgResults extends Component {
   }
 
   static defaultProps = {
-    hamburg: { data: [] }
+    data: []
   };
 
   constructor(props) {
@@ -31,9 +31,9 @@ class HamburgResults extends Component {
     return (
       <Layout contentTitle="Hamburg vysledky">
         <select name="hamburg" onChange={e => this.loadResults(e.target.value)}>
-          {this.props.hamburg.data.map(hamburg => {
+          {this.props.data.map(hamburg => {
             return (
-              <option key={hamburg.ig} value={hamburg.id}>
+              <option key={hamburg.id} value={hamburg.id}>
                 Košicko - furčiansky hamburg {hamburg.title}
               </option>
             );
@@ -60,7 +60,7 @@ class HamburgResults extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     baseUrl: state.baseUrl,
-    hamburg: state.resources.hamburg
+    data: state.resourceData.hamburg
   };
 };
 

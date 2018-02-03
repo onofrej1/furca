@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const fetchFiles = path => {
   return (dispatch, getState) => {
-    const url = getState().nodeUrl + "/files";
+    const url = getState().baseUrl + "/files";
 
     axios.post(url, { path }).then(result => {
       return dispatch({

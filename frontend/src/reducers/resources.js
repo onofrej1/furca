@@ -1,6 +1,6 @@
-import {url} from './index.js';
+import { url } from "./index.js";
 
-export const apiUrl = (state = url+"/api", action) => {
+export const apiUrl = (state = url + "/api", action) => {
   switch (action.type) {
     case "SET_RESOURCE_BASE_URL":
       return action.resourceBaseUrl;
@@ -18,33 +18,41 @@ export const activeResourceName = (state = "", action) => {
   }
 };
 
-export const resources = (state = {}, action) => {
+export const resourceData = (state = {}, action) => {
+  switch (action.type) {
+    case "SET_RESOURCE_DATA":
+      return { ...state, [action.name]: action.data };
+    case "SET_RESOURCE_ROW":
+      let data = state[action.name];
+      let row = data.find(item => item.id == action.row.id);
+      if (row) {
+        data = data.map(
+          item => (item.id == row.id ? { ...item, ...action.row } : item)
+        );
+      } else {
+        data = [...data, action.row];
+      }
+
+      return { ...state, [action.name]: data };
+    default:
+      return state;
+  }
+};
+
+export const resourceFields = (state = {}, action) => {
+  switch (action.type) {
+    case "SET_RESOURCE_FIELDS":
+      return { ...state, [action.name]: action.fields };
+    default:
+      return state;
+  }
+};
+
+export const resource = (state = {}, action) => {
   switch (action.type) {
     case "SET_RESOURCE":
       return { ...state, [action.resource.name]: { ...action.resource } };
 
-    case "SET_RESOURCE_DATA":
-      let resource = state[action.name] || { name: action.name };
-      resource.data = action.data;
-
-      return { ...state, [action.name]: resource };
-    case "SET_RESOURCE_COLUMNS":
-      resource = state[action.name] || { name: action.name };
-      resource.columns = action.columns;
-
-      return { ...state, [action.name]: resource };
-    case "SET_RESOURCE_ROW":
-      resource = state[action.name];
-      let row = resource.data.find(item => item.id == action.row.id);
-      if (row) {
-        resource.data = resource.data.map(
-          item => (item.id == row.id ? { ...item, ...action.row } : item)
-        );
-      } else {
-        resource.data = [...resource.data, action.row];
-      }
-
-      return { ...state, [action.name]: resource };
     default:
       return state;
   }

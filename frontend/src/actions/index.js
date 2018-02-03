@@ -5,7 +5,7 @@ import {
   setResourceRow,
   deleteResourceRow,
   fetchResourceData,
-  fetchResourceColumns,
+  fetchResourceFields,
   setResource,
   setResourceUrl,
   saveResourceData
@@ -21,7 +21,7 @@ export {
   setResourceRow,
   deleteResourceRow,
   fetchResourceData,
-  fetchResourceColumns,
+  fetchResourceFields,
   setResource,
   setResourceUrl,
   saveResourceData,

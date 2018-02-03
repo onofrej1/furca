@@ -15,8 +15,8 @@ class Page extends Component {
 
     const id = this.props.match.params.id;
     let page =
-      this.props.pages.data &&
-      this.props.pages.data.find(page => page.id === parseInt(id, 10));
+      this.props.pages &&
+      this.props.pages.find(page => page.id === parseInt(id, 10));
 
     return (
       <SidebarLayout contentTitle={page.title}>
@@ -28,7 +28,7 @@ class Page extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    pages: state.resources.page
+    pages: state.resourceData.page
   };
 };
 

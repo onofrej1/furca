@@ -46,7 +46,7 @@ export const fetchResourceData = name => {
   };
 };
 
-export const fetchResourceColumns = name => {
+export const fetchResourceFields = name => {
   return (dispatch, getState) => {
     let baseUrl = getState().apiUrl;
     let url = baseUrl + "/" + name + "/fields";
@@ -54,9 +54,9 @@ export const fetchResourceColumns = name => {
       .get(url)
       .then(result => {
         dispatch({
-          type: "SET_RESOURCE_COLUMNS",
+          type: "SET_RESOURCE_FIELDS",
           name,
-          columns: result.data
+          fields: result.data
         });
       });
   };

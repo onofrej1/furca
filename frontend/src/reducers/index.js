@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
-import { apiUrl, activeResourceName, resources } from "./resources";
+import { apiUrl, activeResourceName, resource, resourceData, resourceFields } from "./resources";
 import { files, activeDirectory } from "./files";
 import { user } from "./auth";
 
-const url = 'http://nessbox.local:1337';
+const url = 'http://localhost:1337';
 const baseUrl = (state = url, action) => {
   return state;
 };
@@ -25,7 +25,9 @@ const reducers = combineReducers({
   /* resources.js */
   apiUrl,
   activeResourceName,
-  resources,
+  resourceData,
+  resourceFields,
+  resource,
   /* files.js */
   files,
   activeDirectory,

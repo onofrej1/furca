@@ -9,7 +9,7 @@ import { Row, Col, Modal, ModalHeader, ModalBody } from "reactstrap";
 import {
   setActiveResourceName,
   fetchResourceData,
-  fetchResourceColumns,
+  fetchResourceFields,
   setActiveRow,
   setResourceRow,
   saveResourceData,
@@ -34,7 +34,7 @@ class Crud extends Component {
 
   getListFields = () => {
     let columns = [];
-    let dbColumns = this.props.activeResource.columns;
+    let dbColumns = this.props.fields;
     let fields = models[this.props.name].list || {};
 
     for (let key in dbColumns) {
@@ -50,7 +50,7 @@ class Crud extends Component {
   };
 
   getFormFields = () => {
-    let dbColumns = this.props.activeResource.columns;
+    let dbColumns = this.props.fields;
     let fields = models[this.props.name].form || {};
     let data = {};
     for (let key in dbColumns) {
@@ -67,7 +67,7 @@ class Crud extends Component {
 
   componentDidMount() {
     this.props.fetchResourceData(this.props.name);
-    this.props.fetchResourceColumns(this.props.name);
+    this.props.fetchResourceFields(this.props.name);
   }
 
   render() {
@@ -138,10 +138,11 @@ class Crud extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    data: state.resources[ownProps.name].data || [],
+    data: state.resourceData[ownProps.name] || [],
+    fields: state.resourceFields[ownProps.name] || {},
     resourceBaseUrl: state.resourceBaseUrl,
     activeRow: state.activeRow,
-    activeResource: state.resources[state.activeResourceName]
+    //activeResource: state.resource[state.activeResourceName]
   };
 };
 
@@ -150,6 +151,6 @@ export default connect(mapStateToProps, {
   saveResourceData,
   setResourceRow,
   fetchResourceData,
-  fetchResourceColumns,
+  fetchResourceFields,
   setActiveRow
 })(Crud);
