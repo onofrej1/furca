@@ -12,13 +12,13 @@ module.exports = {
 
     place: { type: "integer" },
 
-    finish_time: { type: "time" },
+    finish_time: { type: "string" },
 
     category: { type: "string" },
 
     team: { type: "string" },
 
-    startn: { type: "string" },
+    start_number: { type: "string" },
 
     runner: {
       columnName: "runner_id",

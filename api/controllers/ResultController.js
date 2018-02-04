@@ -9,7 +9,7 @@ module.exports = {
   getResults: function(req, res) {
     const eventId = req.param("eventId");
     Result.find({ where: { event_id: eventId }, sort: "place" })
-      .populate("person")
+      .populate("runner")
       .exec(callback.bind(null, res));
   }
 };

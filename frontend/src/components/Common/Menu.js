@@ -7,6 +7,7 @@ import {
   Nav,
   //NavLink, -dont work with react router
   UncontrolledDropdown,
+  DropdownItem,
   DropdownMenu,
   DropdownToggle,
   NavItem
@@ -25,7 +26,7 @@ class Menu extends Component {
 
   render() {
     let menuItems = this.props.menuItems;
-    
+
     if (!menuItems) {
       return <div />;
     }
@@ -43,10 +44,10 @@ class Menu extends Component {
 
     return (
       <Nav className="ml-auto" navbar>
-      <NavItem>
-        <Link className="nav-link" to={"/admin"}>
-          Admin
-        </Link>
+        <NavItem>
+          <Link className="nav-link" to={"/admin"}>
+            Admin
+          </Link>
         </NavItem>
         {/*<NavItem>
           <Link className="nav-link" to={"/prihlaska"}>
@@ -59,12 +60,14 @@ class Menu extends Component {
             let link = menu.item.page_id
               ? "/page/" + menu.item.page_id
               : menu.item.link;
-            let isExternalLink = /^https?:\/\//.test(link);
+            const isExternalLink = /^https?:\/\//.test(link);
 
             return (
               <NavItem key={menu.item.id}>
                 {isExternalLink ? (
-                  <a href={link} className="nav-link">{menu.item.title}</a>
+                  <a href={link} className="nav-link">
+                    {menu.item.title}
+                  </a>
                 ) : (
                   <Link className="nav-link" to={link}>
                     {menu.item.title}
@@ -82,13 +85,14 @@ class Menu extends Component {
               <DropdownMenu>
                 {menu.children.map(child => {
                   return (
-                    <Link
-                      key={child.page_id}
-                      className="dropdown-item"
-                      to={"/page/" + child.page_id}
-                    >
-                      {child.title}
-                    </Link>
+                    <DropdownItem key={child.page_id}>
+                      <Link
+                        className="dropdown-item"
+                        to={"/page/" + child.page_id}
+                      >
+                        {child.title}
+                      </Link>
+                    </DropdownItem>
                   );
                 })}
               </DropdownMenu>
@@ -98,16 +102,15 @@ class Menu extends Component {
 
         <UncontrolledDropdown nav>
           <DropdownToggle nav caret className="user-dropdown-toggle">
-            <FontAwesome name="user" className="fa-lg" />{' '}
+            <FontAwesome name="user" className="fa-lg" />{" "}
             <FontAwesome name="sign-in" className="fa-lg" />
           </DropdownToggle>
           <DropdownMenu>
-                <Link
-                  className="dropdown-item"
-                  to="/login"
-                >
-                <FontAwesome name="user" className="fa-lg" />{' '}Log in
-                </Link>
+            <DropdownItem>
+              <Link className="dropdown-item" to="/login">
+                <FontAwesome name="user" className="fa-lg" /> Log in
+              </Link>
+            </DropdownItem>
           </DropdownMenu>
         </UncontrolledDropdown>
       </Nav>

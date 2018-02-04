@@ -6,7 +6,7 @@ import axios from "axios";
 import { Button, Row, Col, Modal, ModalHeader, ModalBody } from "reactstrap";
 import actionButtons from "./Admin/actionButtons";
 import FontAwesome from "react-fontawesome";
-import { Box } from "reactjs-admin-lte";
+import { Box } from "./Admin/AdminLte/AdminLte";
 import Form from "./Form/Form";
 import Field from "./Form/Field";
 
@@ -47,7 +47,7 @@ class ResultsAdmin extends Component {
     let urlParam = data.id ? "/" + data.id : "";
     axios({
       method: data.id ? "put" : "post",
-      url: this.props.resourceBaseUrl + "/Result" + urlParam,
+      url: this.props.apiUrl + "/result" + urlParam,
       data
     }).then(result => {
       this.reloadData();
@@ -70,7 +70,7 @@ class ResultsAdmin extends Component {
         header: "Name",
         Cell: props => (
           <span>
-            {props.row.person.lname} {props.row.person.fname}
+            {props.row.runner.last_name} {props.row.runner.first_name}
           </span>
         )
       },
@@ -91,7 +91,7 @@ class ResultsAdmin extends Component {
           <Col md={12}>
             <Box className="box-primary">
               <Box.Header className="with-border">
-                <Box.Title>Results</Box.Title>
+                Results
                 <Button
                   size="sm"
                   className="float-right"
@@ -161,12 +161,11 @@ const ResultsForm = props => {
       <Field type="hidden" name="id" value="null" />
       <Field
         component="relation"
-        label="Name"
-        name="person_id"
-        resourceTable="Person"
+        name="runner"
+        resourceTable="runner"
         render={props => (
           <span>
-            {props.row.lname} {props.row.fname}
+            {props.row.last_name} {props.row.first_name}
           </span>
         )}
       />
@@ -180,10 +179,10 @@ const ResultsForm = props => {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    resourceBaseUrl: state.resourceBaseUrl,
+    apiUrl: state.apiUrl,
     activeRow: state.activeRow,
     baseUrl: state.baseUrl,
-    events: state.resources.event && state.resources.event.data
+    events: state.resourceData.event
   };
 };
 

@@ -21,6 +21,7 @@ class RelationField extends Component {
       label,
       help,
       error,
+      options,
       emptyOption,
       ...props
     } = this.props;
@@ -40,7 +41,7 @@ class RelationField extends Component {
           {...props}
         >
           {emptyOption && <option value={null} />}
-          {this.props.options.map(option => {
+          {options.map(option => {
             return (
               <option value={option.id}>
                 {this.props.render ? (
@@ -61,10 +62,8 @@ class RelationField extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  let options = state.resources[ownProps.resourceTable];
-
   return {
-    options: options ? options.data : [],
+    options: state.resourceData[ownProps.resourceTable],
   };
 };
 

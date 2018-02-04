@@ -1,7 +1,7 @@
 /**
  * RestController
  *
- * @description :: Server-side logic for managing rests
+ * @description :: Server-side logic for managing models
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
@@ -32,8 +32,10 @@ module.exports = {
 
 function callback(res, err, data) {
   if (err) {
+    console.log(err);
     return res.json(err);
   } else {
+    console.log(data);
     return res.json(data);
   }
 }
