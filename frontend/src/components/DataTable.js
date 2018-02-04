@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Table } from "reactstrap";
 import DataTablePager from "./DataTablePager";
 import FontAwesome from "react-fontawesome";
-import { truncate } from "./../Helpers/index";
 
 let _ = require("underscore");
 

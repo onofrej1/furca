@@ -24,10 +24,10 @@ export const resourceData = (state = {}, action) => {
       return { ...state, [action.name]: action.data };
     case "SET_RESOURCE_ROW":
       let data = state[action.name];
-      let row = data.find(item => item.id == action.row.id);
+      let row = data.find(item => item.id === action.row.id);
       if (row) {
         data = data.map(
-          item => (item.id == row.id ? { ...item, ...action.row } : item)
+          item => (item.id === row.id ? { ...item, ...action.row } : item)
         );
       } else {
         data = [...data, action.row];

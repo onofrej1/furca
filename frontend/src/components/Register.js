@@ -1,23 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchResourceData } from "./../actions/index";
-import Layout from "./Common/Layout";
-import DataTable from "./DataTable";
-import axios from "axios";
 import Field from "./Form/Field";
 import Form from "./Form/Form";
 import { register } from "./../actions/index";
-import {
-  Input,
-  InputGroup,
-  InputGroupAddon,
-  Card,
-  CardBody,
-  CardTitle,
-  Row,
-  Col,
-  Button
-} from "reactstrap";
+import { Card, CardBody, Row, Col, Button } from "reactstrap";
 import FontAwesome from "react-fontawesome";
 
 class Register extends Component {

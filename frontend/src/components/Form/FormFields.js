@@ -2,9 +2,6 @@ import React from "react";
 
 export const Input = ({ id, name, type, className, ...props }) => {
   className = className === undefined ? "form-control" : className;
-  {
-    /* value='' */
-  }
 
   return (
     <input

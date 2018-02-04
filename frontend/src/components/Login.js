@@ -1,10 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchResourceData } from "./../actions/index";
-import Layout from "./Common/Layout";
-import DataTable from "./DataTable";
-import axios from "axios";
-import Field from "./Form/Field";
 import Form from "./Form/Form";
 import { login } from "./../actions/index";
 import {
@@ -13,7 +8,6 @@ import {
   InputGroupAddon,
   Card,
   CardBody,
-  CardTitle,
   Row,
   Col,
   Button
@@ -42,7 +36,7 @@ class Login extends Component {
     return (
       <Row>
         <Col md={{ size: 4, offset: 4 }}>
-          <br />        
+          <br />
           <Card style={{ backgroundColor: '#F8F8F8'}}>
             <CardBody>
               <Form processForm={this.login}>

@@ -25,7 +25,7 @@ class Menu extends Component {
 
   render() {
     let menuItems = this.props.menuItems;
-    console.log(menuItems);
+    
     if (!menuItems) {
       return <div />;
     }
@@ -45,7 +45,7 @@ class Menu extends Component {
       <Nav className="ml-auto" navbar>
       <NavItem>
         <Link className="nav-link" to={"/admin"}>
-          AAA
+          Admin
         </Link>
         </NavItem>
         {/*<NavItem>
@@ -53,16 +53,7 @@ class Menu extends Component {
             Prihlaska
           </Link>
         </NavItem>
-        <NavItem>
-          <Link className="nav-link" to={"/login"}>
-            Login
-          </Link>
-        </NavItem>
-        <NavItem>
-          <Link className="nav-link" to={"/signup"}>
-            Register
-          </Link>
-        </NavItem>*/}
+        */}
         {menuTree.filter(menu => menu.item.parent_id === null).map(menu => {
           if (menu.children.length === 0) {
             let link = menu.item.page_id

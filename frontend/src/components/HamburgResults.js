@@ -26,8 +26,6 @@ class HamburgResults extends Component {
   }
 
   render() {
-    console.log(this.props);
-
     return (
       <Layout contentTitle="Hamburg vysledky">
         <select name="hamburg" onChange={e => this.loadResults(e.target.value)}>
@@ -43,12 +41,16 @@ class HamburgResults extends Component {
           <thead className="modal-header-primary">
             <tr>
               {this.state.results.length > 0 &&
-                this.state.results[0].map(cell => <th>{cell}</th>)}
+                this.state.results[0].map(cell => <th key={cell}>{cell}</th>)}
             </tr>
           </thead>
           <tbody>
-            {this.state.results.slice(1).map(row => {
-              return <tr>{row.map(cell => <td>{cell}</td>)}</tr>;
+            {this.state.results.slice(1).map((row, index) => {
+              return (
+                <tr key={index}>
+                  {row.map((cell, i) => <td key={index + "-" + i}>{cell}</td>)}
+                </tr>
+              );
             })}
           </tbody>
         </Table>

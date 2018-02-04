@@ -26,9 +26,10 @@ li:hover {
 }
 
 .my-btn {
-  background-color: white;
+  background-color: white !important;
   border: 1px solid black;
   color: black;
+  height:auto !important;
 }
 
 .my-btn:hover {

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import FontAwesome from "react-fontawesome";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import Field from "./../Form/Field";
 import models from "./CrudModels";
 import DataTable from "./../DataTable";
@@ -15,9 +14,8 @@ import {
   saveResourceData,
 } from "./../../actions";
 import actionButtons from "./actionButtons";
-import { Content, Box } from "reactjs-admin-lte";
+import { Box } from "reactjs-admin-lte";
 import Form from "../Form/Form";
-import axios from "axios";
 
 class Crud extends Component {
   constructor(props) {
@@ -38,7 +36,7 @@ class Crud extends Component {
     let fields = models[this.props.name].list || {};
 
     for (let key in dbColumns) {
-      if(key == 'id') {
+      if(key === 'id') {
         continue;
       }
       const column = { header: key, field: key, ...fields[key] };
@@ -54,7 +52,7 @@ class Crud extends Component {
     let fields = models[this.props.name].form || {};
     let data = {};
     for (let key in dbColumns) {
-      const type = key == "id" ? "hidden" : this.fieldsMap[dbColumns[key].type];
+      const type = key === "id" ? "hidden" : this.fieldsMap[dbColumns[key].type];
       data[key] = { type, ...fields[key] };
     }
 
@@ -109,7 +107,7 @@ class Crud extends Component {
                       const field = fields[key];
                       //console.log(field);
                       if (field instanceof Object) {
-                        return <Field name={key} label={key} {...field} />;
+                        return <Field key={key} name={key} label={key} {...field} />;
                       }
 
                       return (

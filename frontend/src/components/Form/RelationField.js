@@ -3,9 +3,6 @@ import { connect } from "react-redux";
 import { fetchResourceData, fetchResourceFields } from "./../../actions";
 
 class RelationField extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     this.props.fetchResourceData(this.props.resourceTable);

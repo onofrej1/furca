@@ -1,10 +1,6 @@
-import React, { Component } from "react";
-/*import "admin-lte/dist/css/AdminLTE.css";
-import "admin-lte/dist/css/skins/_all-skins.css";
-import "admin-lte/dist/js/adminlte.js;*/
+import React from "react";
 import "./../../../assets/adminlte/css/AdminLTE.css";
 import "./../../../assets/adminlte/css/skins/_all-skins.css";
-//import './../../../assets/adminlte/js/adminlte.js';
 
 const Layout = props => (
   <div className="hold-transition skin-blue sidebar-mini">
@@ -12,7 +8,7 @@ const Layout = props => (
   </div>
 );
 
-const Header = props => <header class="main-header">{props.children}</header>;
+const Header = props => <header className="main-header">{props.children}</header>;
 
 const Sidebar = props => (
   <aside className="main-sidebar">
@@ -29,7 +25,7 @@ Sidebar.Menu = props => (
 Sidebar.Menu.Header = props => <li className="header">{props.children}</li>;
 
 Header.Logo = props => (
-  <a href="#" className="logo">
+  <a href="/" className="logo">
     <span className="logo-mini">{props.children}</span>
     <span className="logo-lg">{props.children}</span>
   </a>
@@ -51,8 +47,8 @@ Content.Header = props => (
 Content.Body = props => <section className="content">{props.children}</section>;
 
 const Footer = props => (
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
+  <footer className="main-footer">
+    <div className="pull-right hidden-xs">
       <b>Version</b> 2.4.0
     </div>
     <strong>

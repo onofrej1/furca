@@ -6,17 +6,17 @@ const actionButtons = {
   Header: "Action",
   Cell: props => (
     <div className="text-center text-nowrap">
-      <button className="my-btn"
+      <Button outline color="secondary" size="sm"
         onClick={() => props.edit(props.row)}
       >
-        <FontAwesome name="pencil-square" />
-      </button>{" "}
-      <button        
+        aaa<FontAwesome name="pencil-square" />
+      </Button>{" "}
+      <Button
         className="my-btn"
         onClick={() => props.remove(props.row)}
       >
         <FontAwesome name="trash-o" />
-      </button>
+      </Button>
     </div>
   )
 };

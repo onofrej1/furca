@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Layout from "./Common/Layout";
 import { fetchResourceData, setActiveRow } from "./../actions/index";
 import DataTable from "./DataTable";
 import axios from "axios";
 import { Button, Row, Col, Modal, ModalHeader, ModalBody } from "reactstrap";
 import actionButtons from "./Admin/actionButtons";
 import FontAwesome from "react-fontawesome";
-import { Content, Box } from "reactjs-admin-lte";
+import { Box } from "reactjs-admin-lte";
 import Form from "./Form/Form";
 import Field from "./Form/Field";
 
@@ -84,7 +83,7 @@ class ResultsAdmin extends Component {
         field: "finish_time"
       },
       actionButtons
-    ];    
+    ];
 
     return (
       <div>

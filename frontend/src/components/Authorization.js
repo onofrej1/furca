@@ -1,7 +1,5 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React from "react";
 import { connect } from "react-redux";
-import SidebarLayout from "./Common/SidebarLayout";
 
 const Authorization = allowedRoles => WrappedComponent => {
   class WithAuthorization extends React.Component {
@@ -16,7 +14,7 @@ const Authorization = allowedRoles => WrappedComponent => {
       }
       const roles = this.props.user ? this.props.user.Roles : [];
       const authorized = allowedRoles.every(r => {
-        return roles.find(role => role.title == r) !== undefined;
+        return roles.find(role => role.title === r) !== undefined;
       });
       this.setState({ authorized });
     }

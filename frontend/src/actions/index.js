@@ -1,5 +1,5 @@
-import axios from "axios";
-import { createBrowserHistory } from "history";
+import {fetchFiles, setActiveDirectory} from './files.js';
+import {login, register} from './auth.js';
 import {
   setActiveResourceName,
   setResourceRow,
@@ -10,10 +10,6 @@ import {
   setResourceUrl,
   saveResourceData
 } from "./resources.js";
-
-import {fetchFiles, setActiveDirectory} from './files.js';
-
-import {login, register} from './auth.js';
 
 export {
   /* resources.js */

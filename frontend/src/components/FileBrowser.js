@@ -6,10 +6,9 @@ import axios from "axios";
 import Field from "./Form/Field";
 import FontAwesome from "react-fontawesome";
 import { findByPath } from "./../Helpers/index";
-import { Content, Box } from "reactjs-admin-lte";
+import { Box } from "reactjs-admin-lte";
 import {
   Card,
-  CardHeader,
   CardBody,
   CardFooter,
   Container,
@@ -29,7 +28,7 @@ class FileBrowser extends Component {
 
   componentDidMount() {
     const path = this.props.path;
-    console.log(path);
+
     this.props.fetchFiles(path);
     this.props.setActiveDirectory(path);
   }
@@ -116,7 +115,7 @@ class FileBrowser extends Component {
                   action=""
                   onSubmit={this.submitForm}
                   method="post"
-                  enctype="multipart/form-data"
+                  encType="multipart/form-data"
                 >
                   <div style={{ backgroundColor: "#F0F0F0", padding: "8px" }}>
                     <input
@@ -222,7 +221,7 @@ const FilePreview = ({ file, action, isDir }) => {
 const DirectoryTree = ({ data, setDir }) => {
   return data.filter(file => file.type === "folder").map(folder => {
     let data = (
-      <div style={{ marginLeft: "10px" }}>
+      <div key={folder.path} style={{ marginLeft: "10px" }}>
         <Button color="link" onClick={() => setDir(folder.path)}>
           <FontAwesome name="folder" className="fa-folder" /> {folder.name}
         </Button>

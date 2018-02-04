@@ -3,8 +3,6 @@ import Header from "./Common/Header";
 import Footer from "./Common/Footer";
 import { Route, Switch } from "react-router-dom";
 import Registration from "./Registration";
-import AdminArea from "./AdminArea";
-//import FileManager from "./FileManager";
 import FileBrowser from "./FileBrowser";
 import "./../assets/css/main.css";
 import "./../assets/css/modal-header.css";
@@ -21,8 +19,7 @@ import Register from "./Register";
 import ResultsAdmin from "./ResultsAdmin";
 import Home from "./Home";
 import { withRouter } from "react-router-dom";
-import Crud from './Admin/Crud';
-//import Test from './Test';
+import Admin from './Admin/Admin';
 
 class App extends Component {
   render() {
@@ -35,7 +32,7 @@ class App extends Component {
     }
 
     if (location === "/admin") {
-      return <Route path={"/admin"} component={AdminArea} />;
+      return <Route path={"/admin"} component={Admin} />;
     }
 
     if (location === "/test") {
@@ -44,22 +41,20 @@ class App extends Component {
 
     return (
       <div>
-        <Header />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/page/:id" component={Page} />
-
-          <Route path="/crud" component={Crud} />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Register} />
-          <Route path="/clanky" component={Articles} />
-          <Route path={"/clanok/:id"} component={Article} />
-          <Route path="/hamburg-vysledky" component={HamburgResults} />
-          <Route path="/vysledky" component={Results} />
-          <Route path={"/prihlaska"} component={Registration} />
-          <Route path={"/results/:event_id"} component={ResultsAdmin} />
-        </Switch>
-        <Footer />
+      <Header />
+      <Switch>
+      <Route exact path="/" component={Home} />
+      <Route path="/page/:id" component={Page} />
+      <Route path="/login" component={Login} />
+      <Route path="/signup" component={Register} />
+      <Route path="/clanky" component={Articles} />
+      <Route path={"/clanok/:id"} component={Article} />
+      <Route path="/hamburg-vysledky" component={HamburgResults} />
+      <Route path="/vysledky" component={Results} />
+      <Route path={"/prihlaska"} component={Auth(['user'])(Registration)} />
+      <Route path={"/results/:event_id"} component={ResultsAdmin} />
+      </Switch>
+      <Footer />
       </div>
     );
   }

@@ -28,9 +28,8 @@ class Field extends Component {
       ...props
     } = this.props;
     let FormInput = <div />;
-    
+
     component = component || props.type;
-    console.log(component);
 
     switch (component) {
       case "checkbox":
@@ -75,7 +74,7 @@ class Field extends Component {
       return FormInput;
     }
 
-    if (formType == "grid") {
+    if (formType === "grid") {
       return (
         <div class="form-group row">
           <label for={props.name} class="col-sm-2 col-form-label">
@@ -85,7 +84,7 @@ class Field extends Component {
         </div>
       );
     }
-    
+
     return (
       <div className="form-group">
         {props.type !== "hidden" && <label>{label}</label>}

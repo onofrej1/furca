@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchResourceData, fetchResourceColumns } from "./../../actions";
+import { fetchResourceData } from "./../../actions";
 
 class PivotField extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     this.props.fetchResourceData(this.props.resourceTable);
@@ -65,11 +62,11 @@ const mapStateToProps = (state, props) => {
   let options = state.resources[props.resourceTable];
   let pivotResource = state.resources[pivotTable];
   let values = props.model[props.name];
-  if (values == undefined && pivotResource) {
+  if (values === undefined && pivotResource) {
     console.log('set values');
     values = pivotResource.data
       .filter(row => {
-        return row[compareField] == props.model.id;
+        return row[compareField] === props.model.id;
       })
       .map(row => row[valueField] + "");
     props.setValue(props.name, values);

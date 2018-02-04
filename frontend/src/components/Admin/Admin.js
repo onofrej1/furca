@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-import Navbar from "./AdminLte/Navbar";
 import { connect } from "react-redux";
-import { Button, Row, Col } from "reactstrap";
-import Home from "./../Home";
 import FontAwesome from "react-fontawesome";
 import FileBrowser from "./../FileBrowser";
 import ResultsAdmin from "./../ResultsAdmin";
@@ -20,7 +17,6 @@ import {
 
 import {
   Layout,
-  Box,
   Content,
   Sidebar,
   Header,
@@ -33,96 +29,96 @@ const ResourcesMenu = ({ names, setResource }) => {
       names.map(name => {
         return (
           <li key={name}>
-            <a style={{ color: "white" }} onClick={() => setResource(name)}>
-              <FontAwesome name="list" className="fa-th-list" />{" "}
-              {models[name].title}
-            </a>
+          <a style={{ color: "white" }} onClick={() => setResource(name)}>
+          <FontAwesome name="list" className="fa-th-list" />{" "}
+          {models[name].title}
+          </a>
           </li>
         );
       })) || <span />
-  );
-};
+    );
+  };
 
-class Admin extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-    this.props.setResourceUrl(props.baseUrl);
+  class Admin extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {};
+      this.props.setResourceUrl(props.baseUrl);
 
-    React.Children.forEach(props.children, function(child) {
-      props.setResource({
-        name: child.props.name,
-        title: child.props.title,
-        visible: true
+      React.Children.forEach(props.children, function(child) {
+        props.setResource({
+          name: child.props.name,
+          title: child.props.title,
+          visible: true
+        });
       });
-    });
-    this.setResource = this.setResource.bind(this);
-    this.setContent = this.setContent.bind(this);
-  }
+      this.setResource = this.setResource.bind(this);
+      this.setContent = this.setContent.bind(this);
+    }
 
-  setContent(Component) {
-    this.setState({ content: Component });
-  }
+    setContent(Component) {
+      this.setState({ content: Component });
+    }
 
-  setResource(name) {
-    this.props.setActiveResourceName(name);
-    this.props.fetchResourceData(name);
-    this.props.fetchResourceFields(name);
+    setResource(name) {
+      this.props.setActiveResourceName(name);
+      this.props.fetchResourceData(name);
+      this.props.fetchResourceFields(name);
 
-    const crud = <Crud name={name} />;
-    this.setState({ content: crud });
-  }
+      const crud = <Crud name={name} />;
+      this.setState({ content: crud });
+    }
 
-  render() {
-    const names = Object.keys(models);
-    console.log(names);
-    
-    let MediaComponent = <FileBrowser path="./assets/media" />;
+    render() {
+      const names = Object.keys(models);
 
-    return (
-      <Layout>
+      const Results = <ResultsAdmin />;
+      const MediaComponent = <FileBrowser path="./assets/media" />;
+
+      return (
+        <Layout>
         <Header>
-          <Header.Logo>O5 BK Furca</Header.Logo>
-          <Header.Navbar />
+        <Header.Logo>O5 BK Furca</Header.Logo>
+        <Header.Navbar />
         </Header>
         <Sidebar>
-          <Sidebar.Menu>
-            <Sidebar.Menu.Header>MAIN NAVIGATION</Sidebar.Menu.Header>
-            <li>
-              <a
-                style={{ color: "white" }}
-                onClick={() => this.setContent(MediaComponent)}
-              >
-                <FontAwesome name="list" className="fa-th-list" /> Media manager
-              </a>
-            </li>
-            <ResourcesMenu names={names} setResource={this.setResource} />
-          </Sidebar.Menu>
+        <Sidebar.Menu>
+        <Sidebar.Menu.Header>MAIN NAVIGATION</Sidebar.Menu.Header>
+        <li>
+        <a
+        style={{ color: "white" }}
+        onClick={() => this.setContent(MediaComponent)}
+        >
+        <FontAwesome name="list" className="fa-th-list" /> Media manager
+        </a>
+        </li>
+        <ResourcesMenu names={names} setResource={this.setResource} />
+        </Sidebar.Menu>
         </Sidebar>
 
         <Content>
-          <Content.Header />
-          <Content.Body>{this.state.content}</Content.Body>
+        <Content.Header />
+        <Content.Body>{this.state.content}</Content.Body>
         </Content>
 
         <Footer />
-      </Layout>
-    );
+        </Layout>
+      );
+    }
   }
-}
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    activeResourceName: state.activeResourceName,
-    resources: state.resources
+  const mapStateToProps = (state, ownProps) => {
+    return {
+      activeResourceName: state.activeResourceName,
+      resources: state.resources
+    };
   };
-};
-export default connect(mapStateToProps, {
-  fetchFiles,
-  setActiveRow,
-  setResource,
-  fetchResourceData,
-  fetchResourceFields,
-  setActiveResourceName,
-  setResourceUrl
-})(Admin);
+  export default connect(mapStateToProps, {
+    fetchFiles,
+    setActiveRow,
+    setResource,
+    fetchResourceData,
+    fetchResourceFields,
+    setActiveResourceName,
+    setResourceUrl
+  })(Admin);
