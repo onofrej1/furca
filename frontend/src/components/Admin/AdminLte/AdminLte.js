@@ -17,7 +17,7 @@ const Sidebar = props => (
 );
 
 Sidebar.Menu = props => (
-  <ul className="sidebar-menu" data-widget="tree">
+  <ul className="sidebar-menu tree" data-widget="tree">
     {props.children}
   </ul>
 );

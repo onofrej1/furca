@@ -6,7 +6,8 @@ import axios from "axios";
 import Field from "./Form/Field";
 import FontAwesome from "react-fontawesome";
 import { findByPath } from "./../Helpers/index";
-import { Box } from "reactjs-admin-lte";
+import { Box } from "./Admin/AdminLte/AdminLte";
+
 import {
   Card,
   CardBody,

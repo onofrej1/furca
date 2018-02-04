@@ -35,7 +35,6 @@ function callback(res, err, data) {
     console.log(err);
     return res.json(err);
   } else {
-    console.log(data);
     return res.json(data);
   }
 }
