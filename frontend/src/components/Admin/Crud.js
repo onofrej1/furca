@@ -6,11 +6,9 @@ import models from "./CrudModels";
 import DataTable from "./../DataTable";
 import { Row, Col, Modal, ModalHeader, ModalBody } from "reactstrap";
 import {
-  setActiveResourceName,
   fetchResourceData,
   fetchResourceFields,
   setActiveRow,
-  setResourceRow,
   saveResourceData,
 } from "./../../actions";
 import actionButtons from "./actionButtons";
@@ -23,7 +21,9 @@ class Crud extends Component {
     this.processForm = this.processForm.bind(this);
   }
 
-  static defaultProps = {};
+  static defaultProps = {
+    data: []
+  };
 
   fieldsMap = {
     string: "text",
@@ -50,10 +50,12 @@ class Crud extends Component {
   getFormFields = () => {
     let dbColumns = this.props.fields;
     let fields = models[this.props.name].form || {};
+    console.log(fields);
     let data = {};
     for (let key in dbColumns) {
       const type = key === "id" ? "hidden" : this.fieldsMap[dbColumns[key].type];
       data[key] = { type, ...fields[key] };
+      if(fields[key] === false) delete data[key];
     }
 
     return data;
@@ -136,18 +138,14 @@ class Crud extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    data: state.resourceData[ownProps.name] || [],
-    fields: state.resourceFields[ownProps.name] || {},
-    resourceBaseUrl: state.resourceBaseUrl,
+    data: state.resourceData[ownProps.name],
+    fields: state.resourceFields[ownProps.name],
     activeRow: state.activeRow,
-    //activeResource: state.resource[state.activeResourceName]
   };
 };
 
 export default connect(mapStateToProps, {
-  setActiveResourceName,
   saveResourceData,
-  setResourceRow,
   fetchResourceData,
   fetchResourceFields,
   setActiveRow

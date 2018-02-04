@@ -164,9 +164,9 @@ const ResultsForm = props => {
         name="runner"
         resourceTable="runner"
         render={props => (
-          <span>
+          <option key={props.row.id} value={props.row.id}>
             {props.row.last_name} {props.row.first_name}
-          </span>
+          </option>
         )}
       />
       <Field type="number" label="Place" name="place" required />

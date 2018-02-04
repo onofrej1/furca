@@ -30,12 +30,12 @@ export {
 };
 
 export const setActiveRow = activeRow => {
-  let row = {};
+  let row = activeRow ? {} : null;
   for(let property in activeRow) {
     let value = activeRow[property];
     row[property] = value instanceof Object ? value.id : value;
   }
-  
+
   return {
     type: "SET_ACTIVE_ROW",
     activeRow: row

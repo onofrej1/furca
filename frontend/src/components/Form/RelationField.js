@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { fetchResourceData, fetchResourceFields } from "./../../actions";
 
 class RelationField extends Component {
-
   componentDidMount() {
     this.props.fetchResourceData(this.props.resourceTable);
     this.props.fetchResourceFields(this.props.resourceTable);
@@ -23,6 +22,8 @@ class RelationField extends Component {
       error,
       options,
       emptyOption,
+      fetchResourceData,
+      fetchResourceFields,
       ...props
     } = this.props;
 
@@ -37,21 +38,19 @@ class RelationField extends Component {
           name={name}
           type={type}
           className="form-control"
-          onBlur={this.onBlur}
           {...props}
         >
           {emptyOption && <option value={null} />}
-          {options.map(option => {
-            return (
-              <option value={option.id}>
-                {this.props.render ? (
-                  <this.props.render row={option} />
-                ) : (
-                  option[this.props.show]
-                )}
-              </option>
-            );
-          })}
+          {options.map(
+            row =>
+              this.props.render ? (
+                <this.props.render row={row} />
+              ) : (
+                <option key={row.id} value={row.id}>
+                  row[this.props.show]
+                </option>
+              )
+          )}
         </select>
 
         {help && <p class="help-block">{help}</p>}
@@ -63,7 +62,7 @@ class RelationField extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    options: state.resourceData[ownProps.resourceTable],
+    options: state.resourceData[ownProps.resourceTable]
   };
 };
 

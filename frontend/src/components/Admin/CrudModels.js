@@ -1,13 +1,23 @@
 import React from "react";
 
+const article = {
+  title: 'Clanky',
+  form: {
+    source: false,
+  },
+  list: {
+    content: {
+      Cell: props => <span></span>
+    }
+  }
+}
 const page = {
-  title: "Page",
+  title: "Stranky",
   form: {
     title: "number",
     body: {
       type: "ckeditor",
-      dataId: "required",
-      label: "XXX",
+      label: "Body",
       rows: 8,
       style: {
         color: "red",
@@ -44,6 +54,6 @@ const tag = {
   }
 };
 
-const models = { page, tag };
+const models = { page, tag, article };
 
 export default models;

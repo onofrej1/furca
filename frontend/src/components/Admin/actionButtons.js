@@ -9,10 +9,10 @@ const actionButtons = {
       <Button outline color="secondary" size="sm"
         onClick={() => props.edit(props.row)}
       >
-        aaa<FontAwesome name="pencil-square" />
+        <FontAwesome name="pencil-square" />
       </Button>{" "}
       <Button
-        className="my-btn"
+        outline color="secondary" size="sm"
         onClick={() => props.remove(props.row)}
       >
         <FontAwesome name="trash-o" />
