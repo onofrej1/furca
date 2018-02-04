@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  tableName: 'events',
+  tableName: 'event',
   attributes: {
 
     title : { type: 'string' },

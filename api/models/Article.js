@@ -6,9 +6,9 @@
  */
 
 module.exports = {
-  tableName: 'articles',
+  tableName: 'article',
   autoUpdatedAt: false,
-  autoCreatedAt: false,
+  //autoCreatedAt: false,
   attributes: {
 
     title : { type: 'string' },
@@ -18,6 +18,11 @@ module.exports = {
     source : { type: 'string' },
 
     content : { type: 'text' },
+
+    createdAt: {
+      type: 'datetime',
+      columnName: 'created_at'
+    },
 
     tags: {
       collection: 'tag',

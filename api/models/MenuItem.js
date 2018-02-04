@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  tableName: 'menu_items',
+  tableName: 'menu_item',
   attributes: {
 
     title : { type: 'string' },

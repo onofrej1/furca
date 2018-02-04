@@ -6,10 +6,10 @@
  */
 
 module.exports = {
-  tableName: "results",
+  tableName: "result",
   attributes: {
     event_id: { type: "integer" },
-    
+
     place: { type: "integer" },
 
     finish_time: { type: "time" },
@@ -20,9 +20,9 @@ module.exports = {
 
     startn: { type: "string" },
 
-    person: {
-      columnName: "person_id",
-      model: "person"
+    runner: {
+      columnName: "runner_id",
+      model: "runner"
     }
   }
 };

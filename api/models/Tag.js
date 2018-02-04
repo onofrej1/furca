@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  tableName: 'tags',
+  tableName: 'tag',
   attributes: {
 
     title : { type: 'string' },
