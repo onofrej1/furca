@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Field from "./../Form/Field";
 import models from "./CrudModels";
 import DataTable from "./../DataTable";
-import { Row, Col, Modal, ModalHeader, ModalBody } from "reactstrap";
+import { Button, Row, Col, Modal, ModalHeader, ModalBody } from "reactstrap";
 import {
   fetchResourceData,
   fetchResourceFields,
@@ -31,34 +31,34 @@ class Crud extends Component {
   };
 
   getListFields = () => {
-    let columns = [];
+    let fields = [];
     let dbColumns = this.props.fields;
-    let fields = models[this.props.name].list || {};
+    let modelList = models[this.props.name].list || {};
 
     for (let key in dbColumns) {
       if(key === 'id') {
         continue;
       }
-      const column = { header: key, field: key, ...fields[key] };
-      columns.push(column);
+      const column = { header: key, field: key, ...modelList[key] };
+      fields.push(column);
     }
-    columns.push(actionButtons);
+    fields.push(actionButtons);
 
-    return columns;
+    return fields;
   };
 
   getFormFields = () => {
     let dbColumns = this.props.fields;
-    let fields = models[this.props.name].form || {};
-    console.log(fields);
-    let data = {};
+    let modelForm = models[this.props.name].form || {};
+
+    let fields = {};
     for (let key in dbColumns) {
       const type = key === "id" ? "hidden" : this.fieldsMap[dbColumns[key].type];
-      data[key] = { type, ...fields[key] };
-      if(fields[key] === false) delete data[key];
+      fields[key] = { type, ...modelForm[key] };
+      if(modelForm[key] === false) delete fields[key];
     }
 
-    return data;
+    return fields;
   };
 
   processForm(data) {
@@ -80,12 +80,11 @@ class Crud extends Component {
           <Box className="box-primary">
             <Box.Header className="with-border">
               <Box.Title>{this.props.name}</Box.Title>{" "}
-              <button
-                className="my-btn"
+              <Button outline color="secondary" size="sm"
                 onClick={() => this.props.setActiveRow({})}
               >
                 <FontAwesome name="plus-square-o" /> Add new
-              </button>
+              </Button>
             </Box.Header>
             <Box.Body>
               <Modal

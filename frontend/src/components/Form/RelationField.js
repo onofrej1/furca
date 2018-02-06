@@ -17,11 +17,12 @@ class RelationField extends Component {
       id,
       name,
       type,
-      label,
+      resourceTable,
+      label = resourceTable,
       help,
       error,
       options,
-      emptyOption,
+      emptyOption = true,
       fetchResourceData,
       fetchResourceFields,
       ...props
@@ -31,8 +32,6 @@ class RelationField extends Component {
     }
 
     return (
-      <div className="form-group">
-        <label>{label}</label>
         <select
           id={id}
           name={name}
@@ -47,15 +46,11 @@ class RelationField extends Component {
                 <this.props.render row={row} />
               ) : (
                 <option key={row.id} value={row.id}>
-                  row[this.props.show]
+                  { row[this.props.show] }
                 </option>
               )
           )}
         </select>
-
-        {help && <p class="help-block">{help}</p>}
-        {error && <p class="help-block">{error}</p>}
-      </div>
     );
   }
 }

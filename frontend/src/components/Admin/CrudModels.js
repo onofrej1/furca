@@ -11,6 +11,19 @@ const article = {
     }
   }
 }
+
+const menuitem = {
+  title: 'Menu',
+  form: {
+    title: 'text',
+    menu_id: {
+      type: 'relation',
+      resourceTable: 'menu',
+      show: 'title',
+    }
+  }
+}
+
 const page = {
   title: "Stranky",
   form: {
@@ -54,6 +67,6 @@ const tag = {
   }
 };
 
-const models = { page, tag, article };
+const models = { page, tag, article, menuitem };
 
 export default models;
