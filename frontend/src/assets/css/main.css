@@ -2,6 +2,10 @@ body {
   font-size: 1.4em;
 }
 
+ul.sidebar-menu li a {
+  color: white !important;
+}
+
 .navbar-custom {
   height: 50px;
 }

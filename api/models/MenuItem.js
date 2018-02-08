@@ -17,6 +17,16 @@ module.exports = {
 
     link : { type: 'string' },
 
-    page_id : { type: 'integer' }
+    page_id : { type: 'integer' },
+
+    menu: {
+      columnName: "menu_id",
+      model: "menu"
+    },
+
+    page: {
+      columnName: 'page_id',
+      model: 'page'
+    }
   }
 };

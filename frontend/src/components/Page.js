@@ -14,10 +14,11 @@ class Page extends Component {
     }
 
     const id = this.props.match.params.id;
+    console.log(id);
     let page =
       this.props.pages &&
-      this.props.pages.find(page => page.id === parseInt(id, 10));
-
+      this.props.pages.find(page => page.id == parseInt(id, 10));
+    if(!page) return <div/>;
     return (
       <SidebarLayout contentTitle={page.title}>
         <p dangerouslySetInnerHTML={{ __html: page.body }} />

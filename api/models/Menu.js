@@ -11,6 +11,11 @@ module.exports = {
 
     title : { type: 'string' },
 
-    type : { type: 'string' }
+    type : { type: 'string' },
+
+    menuitems: {
+      collection: 'menuitem',
+      via: 'menu'
+    }
   }
 };

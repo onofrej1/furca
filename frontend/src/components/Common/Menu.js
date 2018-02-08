@@ -84,11 +84,12 @@ class Menu extends Component {
               </DropdownToggle>
               <DropdownMenu>
                 {menu.children.map(child => {
+                  console.log(child);
                   return (
-                    <DropdownItem key={child.page_id}>
+                    <DropdownItem key={child.page}>
                       <Link
                         className="dropdown-item"
-                        to={"/page/" + child.page_id}
+                        to={"/page/" + child.page}
                       >
                         {child.title}
                       </Link>

@@ -8,8 +8,9 @@
 module.exports = {
   index: function(req, res) {
     const Model = sails.models[req.param("model")];
-    console.log(sails.models);
-    Model.find().exec(callback.bind(null, res));
+    console.log(Object.keys(sails.models));
+    var data = Model.find();
+    data.exec(callback.bind(null, res));
   },
   fields: function(req, res) {
     const Model = sails.models[req.param("model")];

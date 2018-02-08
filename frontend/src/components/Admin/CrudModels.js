@@ -4,10 +4,14 @@ const article = {
   title: 'Clanky',
   form: {
     source: false,
+    content: {
+      type: 'ckeditor'
+    },
+    created_at: false
   },
   list: {
     content: {
-      Cell: props => <span></span>
+      Cell: props => <span>CC</span>
     }
   }
 }
@@ -20,6 +24,25 @@ const menuitem = {
       type: 'relation',
       resourceTable: 'menu',
       show: 'title',
+      label: 'Menu'
+    },
+    parent_id: {
+      type: 'relation',
+      resourceTable: 'menuitem',
+      show: 'title',
+      label: 'Parent'
+    },
+    link: 'text',
+    page_id: {
+      type: 'relation',
+      resourceTable: 'page',
+      label: 'Stranka',
+      show: 'title',
+    }
+  },
+  list: {
+    menu_id: {
+      Cell: (props) => <strong>aaa</strong>
     }
   }
 }

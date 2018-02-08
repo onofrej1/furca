@@ -9,11 +9,8 @@ class CKEditor extends Component {
   }
 
   render() {
-    return (
-      <div className="form-group">
-        <label>{this.props.label}</label>
+    return (    
         <textarea name={this.elementName} defaultValue={this.props.value} />
-      </div>
     );
   }
 
