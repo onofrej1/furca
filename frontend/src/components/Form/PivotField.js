@@ -3,13 +3,8 @@ import { connect } from "react-redux";
 import { fetchResourceData } from "./../../actions";
 
 class PivotField extends Component {
-
   componentDidMount() {
     this.props.fetchResourceData(this.props.resourceTable);
-
-    if (this.props.pivot) {
-      this.props.fetchResourceData(this.props.pivot[0]);
-    }
   }
 
   static defaultProps = {
@@ -34,9 +29,7 @@ class PivotField extends Component {
           <strong>{label}</strong>
         </p>
         {this.props.options.map(option => {
-          let checked =
-            this.props.values &&
-            this.props.values.indexOf(option.id + "") !== -1;
+          let checked = this.props.values.indexOf(option.id) !== -1;
 
           return (
             <label className="col-md-4">
@@ -58,24 +51,9 @@ class PivotField extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  let [ pivotTable, compareField, valueField ] = props.pivot;
-  let options = state.resources[props.resourceTable];
-  let pivotResource = state.resources[pivotTable];
-  let values = props.model[props.name];
-  if (values === undefined && pivotResource) {
-    console.log('set values');
-    values = pivotResource.data
-      .filter(row => {
-        return row[compareField] === props.model.id;
-      })
-      .map(row => row[valueField] + "");
-    props.setValue(props.name, values);
-  }
-  console.log('values', values);
-
   return {
-    options: options ? options.data : [],
-    values: values
+    options: state.resourceData[props.resourceTable],
+    values: props.model[props.name].map(row => row.id)
   };
 };
 

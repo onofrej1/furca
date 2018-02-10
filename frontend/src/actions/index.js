@@ -30,14 +30,16 @@ export {
 };
 
 export const setActiveRow = activeRow => {
+  console.log(activeRow);
   let row = activeRow ? {} : null;
   for(let property in activeRow) {
     let value = activeRow[property];
-    row[property] = value instanceof Object ? value.id : value;
+    row[property] = value instanceof Object ? value.id || value : value;
   }
 
   return {
     type: "SET_ACTIVE_ROW",
+    //activeRow
     activeRow: row
   };
 };

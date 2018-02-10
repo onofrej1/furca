@@ -1,19 +1,20 @@
 /**
- * Tag.js
+ * ArticleTag.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 
 module.exports = {
-  tableName: 'tag',
+  tableName: 'article_tag',
   attributes: {
-
-    title : { type: 'string' },
-    articles: {
-      collection: 'article',
-      via: 'tags',
-      through: 'articletag',
+    article:{
+      model:'article',
+      columnName: 'article_id',
+    },
+    tag: {
+      model: 'tag',
+      columnName: 'tag_id'
     }
   }
 };

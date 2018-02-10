@@ -3,11 +3,20 @@ import React from "react";
 const article = {
   title: 'Clanky',
   form: {
-    source: false,
+    //source: false,
     content: {
       type: 'ckeditor'
     },
-    created_at: false
+    sourcex: {
+      type: 'checkboxList',
+      options: [{ value: "aaa", label: "AAA" }, { value: "bbb", label: "BBB" }]
+    },
+    created_at: false,
+    tags: {
+      type: 'pivotRelation',
+      resourceTable: 'tag',
+      show: 'title',
+    }
   },
   list: {
     content: {
@@ -20,7 +29,7 @@ const menuitem = {
   title: 'Menu',
   form: {
     title: 'text',
-    menu_id: {
+    menu: {
       type: 'relation',
       resourceTable: 'menu',
       show: 'title',
@@ -33,7 +42,7 @@ const menuitem = {
       label: 'Parent'
     },
     link: 'text',
-    page_id: {
+    page: {
       type: 'relation',
       resourceTable: 'page',
       label: 'Stranka',

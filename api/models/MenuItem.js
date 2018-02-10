@@ -11,13 +11,13 @@ module.exports = {
 
     title : { type: 'string' },
 
-    menu_id : { type: 'integer' },
+    //menu_id : { type: 'integer' },
 
-    parent_id : { type: 'integer' },
+    //parent_id : { type: 'integer' },
 
     link : { type: 'string' },
 
-    page_id : { type: 'integer' },
+    //page_id : { type: 'integer' },
 
     menu: {
       columnName: "menu_id",

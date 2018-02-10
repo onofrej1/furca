@@ -26,7 +26,8 @@ module.exports = {
 
     tags: {
       collection: 'tag',
-      via: 'articles'
+      via: 'articles',
+      through: 'articletag',
     }
   }
 };

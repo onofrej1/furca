@@ -59,7 +59,6 @@ export const RadioList = ({
 }) => {
   return (
     <div>
-      <span>{label}</span>
       {options.map(entry => {
         return (
           <div class="form-check">
@@ -100,7 +99,6 @@ export const CheckboxList = ({
 }) => {
   return (
     <div>
-      <span>{label}</span>
       {options.map(entry => {
         return (
           <div class={"form-check " + inline ? "form-check-inline" : ""}>
