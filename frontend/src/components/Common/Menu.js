@@ -57,8 +57,8 @@ class Menu extends Component {
         */}
         {menuTree.filter(menu => menu.item.parent_id === null).map(menu => {
           if (menu.children.length === 0) {
-            let link = menu.item.page_id
-              ? "/page/" + menu.item.page_id
+            let link = menu.item.page
+              ? "/page/" + menu.item.page
               : menu.item.link;
             const isExternalLink = /^https?:\/\//.test(link);
 
@@ -89,7 +89,7 @@ class Menu extends Component {
                     <DropdownItem key={child.page}>
                       <Link
                         className="dropdown-item"
-                        to={"/page/" + child.page}
+                        to={"/page/" + child.page.id}
                       >
                         {child.title}
                       </Link>

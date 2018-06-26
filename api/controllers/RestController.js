@@ -5,14 +5,11 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
-function customHook(modelName) {
-  const Model = sails.models[req.param("model")];
-}
 
 module.exports = {
   index: function(req, res) {
     const Model = sails.models[req.param("model")];
-    
+
     var data = Model.find();
     for(let index in Model.associations) {
       data.populate(Model.associations[index].alias);
@@ -28,7 +25,10 @@ module.exports = {
   },
   update: function(req, res) {
     const Model = sails.models[req.param("model")];
-    console.log(req.body);
+    //console.log(req.body);
+
+    let fields = Model.attributes;
+    //const data = req.body.map(d => d);
     //res.json(req.body);
     Model.update({ id: req.param("id") }, req.body).exec(callback.bind(null, res));
 
@@ -41,15 +41,15 @@ module.exports = {
 
 function callback(res, err, data) {
   //console.log(data);
-  Article.find(data.id).then(a => {
-    //console.log(a);
-  })
+  /*Article.find(data.id).then(a => {
+    console.log(a);
+  })*/
   //data.tags.add([2, 4]);
   if (err) {
     console.log(err);
     return res.json(err);
   } else {
-    console.log(data);
+    //console.log(data);
     return res.json(data);
   }
 }

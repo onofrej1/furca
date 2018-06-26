@@ -52,10 +52,8 @@ class Form extends Component {
         ? [...values, element.value]
         : values.filter(v => v !== element.value);
     }
+    console.log(this.state.form);
     this.setValue(element.name, value);
-    /*let form = Object.assign({}, this.state.form);
-    form[element.name] = value;
-    this.setState({ form });*/
   };
 
   getOptionValues = options => {

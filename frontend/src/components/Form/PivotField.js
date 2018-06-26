@@ -22,14 +22,14 @@ class PivotField extends Component {
       emptyOption,
       ...props
     } = this.props;
-
+    console.log('values', this.props.values);
     return (
       <div className="checkbox">
         <p>
           <strong>{label}</strong>
         </p>
         {this.props.options.map(option => {
-          let checked = this.props.values.indexOf(option.id) !== -1;
+          let checked = this.props.values.indexOf(option.id+"") !== -1;
 
           return (
             <label className="col-md-4">
@@ -51,9 +51,11 @@ class PivotField extends Component {
 }
 
 const mapStateToProps = (state, props) => {
+  let values = props.model[props.name];
+
   return {
     options: state.resourceData[props.resourceTable],
-    values: props.model[props.name].map(row => row.id)
+    values
   };
 };
 

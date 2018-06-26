@@ -13,7 +13,7 @@ module.exports = {
 
     //menu_id : { type: 'integer' },
 
-    //parent_id : { type: 'integer' },
+    parent_id : { type: 'integer' },
 
     link : { type: 'string' },
 
